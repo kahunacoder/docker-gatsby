@@ -4,7 +4,7 @@ Docker file and script to build a gatsby container for website development
 
 ```docker build -t blog .```
 
-```docker build https://github.com/kahunacoder/docker-gatsby.git```
+```docker build https://github.com/kahunacoder/docker-gatsby.git#main```
 
 
 * ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 blog sh```
