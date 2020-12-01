@@ -2,6 +2,10 @@
 
 Docker file and script to build a gatsby container for website development
 
+Requirements
+* docker
+* git
+
 Build a container for developing
 ```docker build https://github.com/kahunacoder/docker-gatsby.git -t gatsby-blog```
 
