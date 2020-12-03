@@ -8,7 +8,6 @@ ENV CHROME_BIN="/usr/bin/chromium-browser" \
 
 RUN apk update \
   && apk add wget gnupg \
-  # && apk add --update --repository http://dl-3.alpinelinux.org/alpine/edge/testing \
   && apk add vips-tools vips-dev fftw-dev gcc g++ make libc6-compat autoconf automake libtool musl-dev nasm util-linux \
   && apk add udev ttf-freefont chromium \
   && apk add git \
