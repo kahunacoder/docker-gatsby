@@ -38,7 +38,7 @@ then
   gatsby build
   gatsby serve --port 8000
 
-elif  [ "$1" == "clearcache" ]
+elif  [ "$1" == "develop-no-cache" ]
 then
   rm -rf $GATSBY_DIR/public
   rm -rf $GATSBY_DIR/.cache
