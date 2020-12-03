@@ -24,7 +24,7 @@ fi
 # Decide what to do
 if  [ "$1" == "develop" ]
 then
-  rm -rf $GATSBY_DIR/public
+  # rm -rf $GATSBY_DIR/public
   gatsby develop --host 0.0.0.0
 
 elif  [ "$1" == "build" ]
