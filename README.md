@@ -22,6 +22,14 @@ Note: You'll also see a second link: http://localhost:8000/___graphql. This is a
 
 Open the site directory in your code editor of choice and edit src/pages/index.js. Save your changes and the browser will update in real time!
 
+Commands
+* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
+* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog sh```
+* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog clearcache```
+* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog stage```
+* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog build```
+
+
 ## 🧐 What's inside?
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 ```
@@ -80,9 +88,3 @@ To dive straight into code samples, head to our documentation. In particular, ch
 ## 💫 Deploy
 Deploy to Netlify
 
-Commands
-* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
-* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog sh```
-* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog clearcache```
-* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog stage```
-* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog build```
