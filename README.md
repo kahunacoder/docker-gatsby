@@ -5,6 +5,13 @@ Docker file and script to build a gatsby container for website development
 Requirements
 * docker
 * git
+* [Notion.so](http://notion.so) account `FREE`
+* Your own domain `~$10/year`
+* GitHub account `FREE`
+* Netlify account `FREE`
+* Coding Knowledge: `2/5` 
+(*Enough to know where a chunk of code starts and ends)*
+
 
 1) Build a container for developing
 
@@ -20,7 +27,68 @@ Your site is now running at http://localhost:8000!
 
 Note: You'll also see a second link: http://localhost:8000/___graphql. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the Gatsby tutorial.
 
-Open the site directory in your code editor of choice and edit src/pages/index.js. Save your changes and the browser will update in real time!
+## Make this site your own.
+
+**Step 1: duplicate the table** 
+Duplicate the table at https://www.notion.so/kahunacoder/b3189a381ce8490796fea90fa68310c2?v=4a46e38c7e514dee8ffbaf3ad690313e
+
+
+**Step 2: Edit this piece of code into your gatsby-config.js file**
+Replace the table url with the one you dupliucated at step one.
+```jsx
+plugins: [
+    {
+      resolve: `@kahunacoder/docker-notion-database`,
+      options: {
+        sourceConfig: [
+          {
+            name: 'posts',
+            table: 'https://www.notion.so/kahunacoder/b3189a381ce8490796fea90fa68310c2?v=4a46e38c7e514dee8ffbaf3ad690313e',
+            cacheType: 'html'
+          }
+        ]
+      }
+    }
+]
+```
+
+**Step 3: Also edit the sites meta data into your gatsby-config.js file**
+Replace the table url with the one you dupliucated at step one.
+```jsx
+  siteMetadata: {
+    title: `KahunaCoder`,
+    author: `Gary Smith`,
+    description: `A blog.`,
+    siteUrl: `http://example.com/`,
+    siteVerification: {
+      google: ``,
+      bing: ``
+    },
+    social: {
+      twitter: ``,
+      linkedin: ``,
+      facebook: ``,
+      stackOverflow: ``,
+      github: ``,
+      instagram: ``,
+      pinterest: ``,
+      youtube: ``,
+      email: ``,
+      phone: ``,
+      fax: ``,
+      address: ``
+    },
+    keywords: ``,
+    organization: {
+      name: ``,
+      url: ``
+    },
+  },
+```
+
+
+
+Save your changes and the browser will update in real time!
 
 Commands
 * ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
