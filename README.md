@@ -106,7 +106,7 @@ In your terminal hold the ```control``` key down and press the ```c``` key
 
 **Step 5: Restart the development server** 
 
- Verify your changes
+ Verify your changes by pasting this into the termianl and visiting http://localhost:8000
  
 ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
 
