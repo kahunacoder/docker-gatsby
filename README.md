@@ -5,6 +5,7 @@ Docker file and script to build a gatsby container for website development
 Requirements
 * docker
 * git
+* code editor: VS Code Recommended
 * [Notion.so](http://notion.so) account `FREE`
 * Your own domain `~$10/year`
 * GitHub account `FREE`
@@ -12,16 +13,25 @@ Requirements
 * Coding Knowledge: `2/5` 
 (*Enough to know where a chunk of code starts and ends)*
 
+## Create your development envrionment.
 
-1) Build a container for developing
+VSCode editor assumed here.
+
+**Step 1: Build a container for developing**
+
+Create a new folder for your project and open it with vs code and paste the following into the terminal
 
 ```docker build https://github.com/kahunacoder/docker-gatsby.git -t gatsby-blog```
 
-2) Start developing
+**Step 2: Start developing**
+
+After step one finished paste the following line into your terminal.
 
 ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
 
-3) Open the source code and start editing!
+**Step 3: Check out the default site!**
+
+The terminal will display this message.
 
 Your site is now running at http://localhost:8000!
 
@@ -29,14 +39,14 @@ Note: You'll also see a second link: http://localhost:8000/___graphql. This is a
 
 ## Make this site your own.
 
-**Step 1: duplicate the table** 
+**Step 1: Duplicate the content table**
 
 Duplicate the table at https://www.notion.so/kahunacoder/b3189a381ce8490796fea90fa68310c2?v=4a46e38c7e514dee8ffbaf3ad690313e
 
 
 **Step 2: Edit this piece of code into your gatsby-config.js file**
 
-Replace the table url with the one you dupliucated at step one.
+Replace the table url with the one you duplicated in step one.
 ```jsx
 plugins: [
     {
@@ -56,7 +66,8 @@ plugins: [
 
 **Step 3: Also edit the sites meta data into your gatsby-config.js file**
 
-Replace the table url with the one you dupliucated at step one.
+Replace the siteMetadata fields with your own. Remove options you don't use.
+
 ```jsx
   siteMetadata: {
     title: `Site Title`,
