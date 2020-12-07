@@ -24,7 +24,7 @@ Open the site directory in your code editor of choice and edit src/pages/index.j
 
 ## 🧐 What's inside?
 A quick look at the top-level files and directories you'll see in a Gatsby project.
-
+```
 .
 ├── node_modules
 ├── src
@@ -40,6 +40,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 ├── postcss.config.js
 ├── README.md
 └── tailwind.config.js
+```
 
 /node_modules: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
 
