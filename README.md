@@ -30,10 +30,12 @@ Note: You'll also see a second link: http://localhost:8000/___graphql. This is a
 ## Make this site your own.
 
 **Step 1: duplicate the table** 
+
 Duplicate the table at https://www.notion.so/kahunacoder/b3189a381ce8490796fea90fa68310c2?v=4a46e38c7e514dee8ffbaf3ad690313e
 
 
 **Step 2: Edit this piece of code into your gatsby-config.js file**
+
 Replace the table url with the one you dupliucated at step one.
 ```jsx
 plugins: [
@@ -53,11 +55,12 @@ plugins: [
 ```
 
 **Step 3: Also edit the sites meta data into your gatsby-config.js file**
+
 Replace the table url with the one you dupliucated at step one.
 ```jsx
   siteMetadata: {
-    title: `KahunaCoder`,
-    author: `Gary Smith`,
+    title: `Site Title`,
+    author: `Your name`,
     description: `A blog.`,
     siteUrl: `http://example.com/`,
     siteVerification: {
@@ -86,9 +89,16 @@ Replace the table url with the one you dupliucated at step one.
   },
 ```
 
+**Step 4: Save your changes and stop the development server** 
 
+In your terminal hold the ```control``` key down and press the ```c``` key
 
-Save your changes and the browser will update in real time!
+**Step 5: Restart the development server** 
+
+ Verify your changes
+ 
+```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
+
 
 Commands
 * ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
