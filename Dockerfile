@@ -5,9 +5,6 @@ EXPOSE 8000
 
 ENV CHROME_BIN="/usr/bin/chromium-browser" \
   PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true" \
-  STALL_RETRY_LIMIT=12 \
-  STALL_TIMEOUT=120000 \
-  CONNECTION_TIMEOUT=120000 
 
 RUN apk update \
   && apk add wget gnupg \
