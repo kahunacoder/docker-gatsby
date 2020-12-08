@@ -4,7 +4,10 @@ FROM node:12-alpine
 EXPOSE 8000
 
 ENV CHROME_BIN="/usr/bin/chromium-browser" \
-  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true" \
+  STALL_RETRY_LIMIT= 6 \
+  STALL_TIMEOUT = 60000 \
+  CONNECTION_TIMEOUT =  60000 
 
 RUN apk update \
   && apk add wget gnupg \
