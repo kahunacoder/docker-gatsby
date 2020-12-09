@@ -27,11 +27,11 @@ VSCode editor assumed here.
 
 Create a new folder for your project and open it with vs code and edit the build-arg for the folowing:
 
-1. This is the name of the folder where your site will be created locally. ```/site``` is the default if you omit this option
+1. This is the name of the folder where your site will be created locally. `/site` is the default if you omit this option
 
 ```GATSBY_DIR="/site"```
 
-1. This is the starter theme you want to use. I built this tool to support this starter ```https://github.com/kahunacoder/gatsby-notion-starter.git``` which had specific requirements for the software installed in the container. But the default starter also works. I haven't tested other starters and have no intention of supporting them but they may work. If you omit this option the default gatsby starter is used.
+1. This is the starter theme you want to use. I built this tool to support this starter `https://github.com/kahunacoder/gatsby-notion-starter.git` which had specific requirements for the software installed in the container. But the default starter also works. I haven't tested other starters and have no intention of supporting them but they may work. If you omit this option the default gatsby starter is used.
 
 ```GATSBY_THEME="https://github.com/kahunacoder/gatsby-notion-starter.git"```
 
@@ -51,17 +51,17 @@ docker build \
 https://github.com/kahunacoder/docker-gatsby.git -t gatsby-blog
 ```
 
-This will build a gatsby blog using the gatsby-notion-starter and putting it in the folder blog and creating a git repo for it.
+This will build a gatsby blog using the `gatsby-notion-starter` and putting it in the folder `blog` and creating a `git repo` for it.
 
 ```shell:
 docker build https://github.com/kahunacoder/docker-gatsby.git -t gatsby-blog
 ```
 
-This will build a gatsby blog using the gatsby-starter-default and putting it in the folder site but not creating a git repo for it.
+This will build a gatsby blog using the `gatsby-starter-default` and putting it in the folder `site` but `NOT` creating a `git repo` for it.
 
 ### Start developing
 
-After step one finished paste the following line into your terminal. This assumes the default folder ```/site```. Edit this if you used a different folder.
+After step one finished paste the following line into your terminal. This assumes the default folder `/site`. Edit this if you used a different folder.
 
 ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
 
@@ -77,7 +77,7 @@ Note: You'll also see a second link: <http://localhost:8000/___graphql>. This is
 
 ### Edit the sites meta data into your gatsby-config.js file
 
-Replace the siteMetadata fields with your own. Remove options you don't use. This example is from my gatsby-notion-starter other starters will have different option to configure.
+Replace the `siteMetadata` fields with your own. Remove options you don't use. This example is from my `gatsby-notion-starter` other starters will have different option to configure.
 
 ```jsx
   siteMetadata: {
@@ -111,15 +111,15 @@ Replace the siteMetadata fields with your own. Remove options you don't use. Thi
   },
 ```
 
-These steps apply to my gatsby-notion-starter template.
+These steps apply to my `gatsby-notion-starter` template.
 
 ### Duplicate the content table
 
 Duplicate the table at <https://www.notion.so/kahunacoder/b3189a381ce8490796fea90fa68310c2?v=4a46e38c7e514dee8ffbaf3ad690313e>
 
-### Edit this piece of code into your gatsby-config.js file
+### Edit this piece of code into your `gatsby-config.js` file
 
-Replace the table url with the one you duplicated in the previuos step.
+Replace the `table` url with the one you duplicated in the previuos step.
 
 ```jsx
 plugins: [
@@ -140,7 +140,7 @@ plugins: [
 
 ### Save your changes and stop the development server
 
-In your terminal hold the ```control``` key down and press the ```c``` key
+In your terminal hold the `control` key down and press the `c` key
 
 ### Restart the development server
 
