@@ -1,72 +1,83 @@
 # docker-gatsby
 
-Docker file and script to build a gatsby container for website development
+Docker file and script to build a gatsby container for website development.
+
+I built this because I didn't want to pollute my local machine with the libraries and software need to build a gatsby web site.
 
 Requirements
+
 * docker
 * git
-* code editor: VS Code Recommended
-* [Notion.so](http://notion.so) account `FREE`
+* code editor: `VS Code Recommended`
 * Your own domain `~$10/year`
-* GitHub account `FREE`
-* Netlify account `FREE`
-* Coding Knowledge: `2/5` 
-(*Enough to know where a chunk of code starts and ends)*
+* Coding Knowledge: `2/5`
+(*Enough to know where a chunk of code starts and ends)*)
 
-## Create your development envrionment.
+Requirements for hosting a notion powered site on netlify
+
+* GitHub account `FREE`
+* [Notion.so](http://notion.so) account `FREE`
+* Netlify account `FREE`
+
+## Create your development envrionment
 
 VSCode editor assumed here.
 
-**Step 1: Build a container for developing**
+### Build a container for developing
 
-Create a new folder for your project and open it with vs code and paste the following into the terminal
+Create a new folder for your project and open it with vs code and edit the build-arg for the folowing:
 
-```docker build https://github.com/kahunacoder/docker-gatsby.git -t gatsby-blog```
+1. This is the name of the folder where your site will be created locally. ```/site``` is the default if you omit this option
 
-**Step 2: Start developing**
+```GATSBY_DIR="/site"```
 
-After step one finished paste the following line into your terminal.
+1. This is the starter theme you want to use. I built this tool to support this starter ```https://github.com/kahunacoder/gatsby-notion-starter.git``` which had specific requirements for the software installed in the container. But the default starter also works. I haven't tested other starters and have no intention of supporting them but they may work. If you omit this option the default gatsby starter is used.
+
+```GATSBY_THEME="https://github.com/kahunacoder/gatsby-notion-starter.git"```
+
+1. The gatsby starters create a git repo to use if you include the following options. If you omit these options no repo is created.
+
+```GIT_USER_NAME="Your Name"```
+```GIT_EMAIL="you@youremail"```
+
+Here's an example with all options entered.
+
+```shell:
+docker build \
+    --build-arg GATSBY_DIR="/blog" \
+    --build-arg GATSBY_THEME="https://github.com/kahunacoder/gatsby-notion-starter.git" \
+    --build-arg GIT_USER_NAME="Your Name" \
+    --build-arg GIT_EMAIL="you@youremail" \
+https://github.com/kahunacoder/docker-gatsby.git -t gatsby-blog
+```
+
+This will build a gatsby blog using the gatsby-notion-starter and putting it in the folder blog and creating a git repo for it.
+
+```shell:
+docker build https://github.com/kahunacoder/docker-gatsby.git -t gatsby-blog
+```
+
+This will build a gatsby blog using the gatsby-starter-default and putting it in the folder site but not creating a git repo for it.
+
+### Start developing
+
+After step one finished paste the following line into your terminal. This assumes the default folder ```/site```. Edit this if you used a different folder.
 
 ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
 
-**Step 3: Check out the default site!**
+### Check out the default site
 
 The terminal will display this message.
 
-Your site is now running at http://localhost:8000!
+Your site is now running at <http://localhost:8000>!
 
-Note: You'll also see a second link: http://localhost:8000/___graphql. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the Gatsby tutorial.
+Note: You'll also see a second link: <http://localhost:8000/___graphql>. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the Gatsby tutorial.
 
-## Make this site your own.
+## Make this site your own
 
-**Step 1: Duplicate the content table**
+### Edit the sites meta data into your gatsby-config.js file
 
-Duplicate the table at https://www.notion.so/kahunacoder/b3189a381ce8490796fea90fa68310c2?v=4a46e38c7e514dee8ffbaf3ad690313e
-
-
-**Step 2: Edit this piece of code into your gatsby-config.js file**
-
-Replace the table url with the one you duplicated in step one.
-```jsx
-plugins: [
-    {
-      resolve: `@kahunacoder/docker-notion-database`,
-      options: {
-        sourceConfig: [
-          {
-            name: 'posts',
-            table: 'https://www.notion.so/kahunacoder/b3189a381ce8490796fea90fa68310c2?v=4a46e38c7e514dee8ffbaf3ad690313e',
-            cacheType: 'html'
-          }
-        ]
-      }
-    }
-]
-```
-
-**Step 3: Also edit the sites meta data into your gatsby-config.js file**
-
-Replace the siteMetadata fields with your own. Remove options you don't use.
+Replace the siteMetadata fields with your own. Remove options you don't use. This example is from my gatsby-notion-starter other starters will have different option to configure.
 
 ```jsx
   siteMetadata: {
@@ -100,28 +111,56 @@ Replace the siteMetadata fields with your own. Remove options you don't use.
   },
 ```
 
-**Step 4: Save your changes and stop the development server** 
+These steps apply to my gatsby-notion-starter template.
+
+### Duplicate the content table
+
+Duplicate the table at <https://www.notion.so/kahunacoder/b3189a381ce8490796fea90fa68310c2?v=4a46e38c7e514dee8ffbaf3ad690313e>
+
+### Edit this piece of code into your gatsby-config.js file
+
+Replace the table url with the one you duplicated in the previuos step.
+
+```jsx
+plugins: [
+    {
+      resolve: `@kahunacoder/docker-notion-database`,
+      options: {
+        sourceConfig: [
+          {
+            name: 'posts',
+            table: 'https://www.notion.so/kahunacoder/b3189a381ce8490796fea90fa68310c2?v=4a46e38c7e514dee8ffbaf3ad690313e',
+            cacheType: 'html'
+          }
+        ]
+      }
+    }
+]
+```
+
+### Save your changes and stop the development server
 
 In your terminal hold the ```control``` key down and press the ```c``` key
 
-**Step 5: Restart the development server** 
+### Restart the development server
 
- Verify your changes by pasting this into the termianl and visiting http://localhost:8000
- 
+ Verify your changes by pasting this (edit as needed) into the termianl and visiting <http://localhost:8000>
+
 ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
 
-
 Commands
-* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
+
 * ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog sh```
-* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog clearcache```
+* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop```
+* ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog develop-no-cache```
 * ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog stage```
 * ```docker run -it --rm -v $(pwd)/site:/site -p 8000:8000 gatsby-blog build```
 
-
 ## 🧐 What's inside?
+
 A quick look at the top-level files and directories you'll see in a Gatsby project.
-```
+
+```bash
 .
 ├── node_modules
 ├── src
@@ -168,6 +207,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 **tailwind.config.js:** The TailwindCSS configuration file, see their documentation for more information on how to customize Tailwind.
 
 ## 🎓 Learning Gatsby
+
 Looking for more guidance? Full documentation for Gatsby lives on the website. Here are some places to start:
 
 For most developers, we recommend starting with our in-depth tutorial for creating a site with Gatsby. It starts with zero assumptions about your level of ability and walks through every step of the process.
@@ -175,5 +215,5 @@ For most developers, we recommend starting with our in-depth tutorial for creati
 To dive straight into code samples, head to our documentation. In particular, check out the Guides, API Reference, and Advanced Tutorials sections in the sidebar.
 
 ## 💫 Deploy
-Deploy to Netlify
 
+Deploy to Netlify

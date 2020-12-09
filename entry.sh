@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-export GATSBY_DIR="/site"
-export GATSBY_THEME="https://github.com/kahunacoder/gatsby-notion-starter.git"
+# export GATSBY_DIR="/site"
+# export GATSBY_THEME="https://github.com/kahunacoder/gatsby-notion-starter.git"
 export PATH="$PATH:/usr/local/bin/gatsby"
 
 # Initialize Gatsby or run NPM install if needed
