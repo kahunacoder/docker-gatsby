@@ -1,17 +1,20 @@
 
 # develop stage
 FROM node:12-alpine
-EXPOSE 8000
 
 ARG GATSBY_DIR="/site"
 ARG GATSBY_THEME="https://github.com/gatsbyjs/gatsby-starter-default.git"
 ARG GIT_USER_NAME=""
 ARG GIT_EMAIL=""
+ARG GATSBY_PORT=8000
+
+EXPOSE $GATSBY_PORT
 
 ENV CHROME_BIN="/usr/bin/chromium-browser" \
   PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true" \
   GATSBY_DIR=$GATSBY_DIR \
-  GATSBY_THEME=$GATSBY_THEME
+  GATSBY_THEME=$GATSBY_THEME \
+  GATSBY_PORT=$GATSBY_PORT
 
 RUN apk update \
   && apk add wget gnupg \
@@ -27,7 +30,8 @@ RUN if [[ -z "$GIT_EMAIL" ]] ; then echo GIT_EMAIL not provided ; else git confi
 # RUN git config --global user.name $GIT_USER_NAME
 # RUN git config --global user.email $GIT_EMAIL
 
-RUN yarn global add gatsby-cli
+# RUN yarn global add gatsby-cli
+RUN npm install -g gatsby-cli
 
 RUN mkdir -p $GATSBY_DIR
 WORKDIR $GATSBY_DIR
