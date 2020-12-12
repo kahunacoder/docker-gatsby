@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-# export GATSBY_DIR="/site"
-# export GATSBY_THEME="https://github.com/kahunacoder/gatsby-notion-starter.git"
 export PATH="$PATH:/usr/local/bin/gatsby"
 
 # Initialize Gatsby or run NPM install if needed
@@ -34,9 +32,9 @@ elif  [ "$1" == "stage" ]
 then
   rm -rf $GATSBY_DIR/public
   gatsby build
-  gatsby serve --port $GATSBY_PORT
+  gatsby serve --host 0.0.0.0 --port $GATSBY_PORT
 
-elif  [ "$1" == "develop-no-cache" ]
+elif  [ "$1" == "develop-clean" ]
 then
   rm -rf $GATSBY_DIR/public
   rm -rf $GATSBY_DIR/.cache
