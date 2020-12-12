@@ -111,7 +111,7 @@ Replace the `siteMetadata` fields with your own. Remove options you don't use. T
   },
 ```
 
-## The next steps apply to my `gatsby-notion-starter` template.
+## The next steps apply to my `gatsby-notion-starter` template
 
 If you aren't using this starter you can skip down to saving your changes and restarting the development server.
 
